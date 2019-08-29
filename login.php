@@ -9,7 +9,7 @@
 		<form class="form-signin">
 
 				<div class="text-center mb-4">
-						<img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+						<img class="mb-4" src="img/logo-pentaxial-10-anos.svg" alt="Logo Pentaxial 10 anos">
 						<h1 class="h3 mb-3 font-weight-normal">Labels flutuantes</h1>
 						<p>Construa campos de formulário usando labels flutuantes, através do pseudo-elemento <code>:placeholder-shown</code>. <a href="https://caniuse.com/#feat=css-placeholder-shown">Funciona nas últimas versões do Chrome, Safari e Firefox.</a></p>
 				</div>
