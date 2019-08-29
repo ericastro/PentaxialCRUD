@@ -6,6 +6,7 @@
 </head>
 
 <body>
+	<!-- Menu Navegação -->
 	<div class="container">
 		<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
@@ -30,6 +31,19 @@
 			</div>
 		</nav>
 	</div>
-</body>
+	<!-- Menu Navegação -->
 
+	<!-- Container Principal -->
+	<div class="container col-12">
+		<div class="row align-items-start">
+			<h1>Cadastro de Pessoas</h1>	
+		</div>
+		<div class="row">
+			<table></table>			
+		</div>
+	</div>
+	<!-- Container Principal -->
+
+</body>
+<?php include_once 'pages/javascript.php'; ?>
 </html>
