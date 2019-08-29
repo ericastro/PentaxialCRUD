@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/pagination.css">
 	<link rel="stylesheet" type="text/css" href="css/offcanvas.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<style type="text/css">
 		// Dispositivos extra small (telefones em modo retrato, com menos de 576px)
