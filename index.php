@@ -7,7 +7,7 @@
 
 <body>
 	<!-- Menu Navegação -->
-	<div class="container">
+	<section>
 		<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
 				<span class="navbar-toggler-icon"></span>
@@ -30,19 +30,56 @@
 				</ul>
 			</div>
 		</nav>
-	</div>
+	</section>
 	<!-- Menu Navegação -->
 
 	<!-- Container Principal -->
-	<div class="container col-12">
-		<div class="row align-items-start">
-			<h1>Cadastro de Pessoas</h1>	
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1>Cadastro de Pessoas</h1>					
+			</div>
 		</div>
 		<div class="row">
-			<table></table>			
+			<div class="col-12">
+				<table class="table table-striped table-hover">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Primeiro</th>
+							<th scope="col">Último</th>
+							<th scope="col">Nickname</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr onclick="alert();">
+							<th scope="row">1</th>
+							<td >Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<th scope="row">3</th>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 	<!-- Container Principal -->
+
+	<footer class="fixed-bottom bg-light">
+		<p class="text-right wh-100">Developer by Eric Castro</p>
+	</footer>
 
 </body>
 <?php include_once 'pages/javascript.php'; ?>
