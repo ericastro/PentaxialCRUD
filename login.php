@@ -7,11 +7,9 @@
 
 <body>
 		<form class="form-signin">
-
 				<div class="text-center mb-4">
 						<img class="mb-4" src="img/logo-pentaxial-10-anos.svg" alt="Logo Pentaxial 10 anos">
-						<h1 class="h3 mb-3 font-weight-normal">Labels flutuantes</h1>
-						<p>Construa campos de formulário usando labels flutuantes, através do pseudo-elemento <code>:placeholder-shown</code>. <a href="https://caniuse.com/#feat=css-placeholder-shown">Funciona nas últimas versões do Chrome, Safari e Firefox.</a></p>
+						<h1 class="h3 mb-3 font-weight-normal">Cadastro de Pessoas</h1>
 				</div>
 
 				<div class="form-label-group">
@@ -31,7 +29,6 @@
 				</div>
 
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-				<p class="mt-5 mb-3 text-muted text-center">© 2017-2018</p>
 		</form>
 </body>
 
