@@ -37,7 +37,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<h1>Cadastro de Pessoas</h1>					
+				<h1>Cadastro de Pessoas<a href="create.php" class="btn btn-secondary btn-dark btn-lg active ml-3" role="button" aria-pressed="true">+</a></h1>
+
 			</div>
 		</div>
 		<div class="row">
@@ -77,7 +78,7 @@
 	</div>
 	<!-- Container Principal -->
 
-	<footer class="fixed-bottom bg-light">
+	<footer class="fixed-bottom bg-dark footer-color">
 		<p class="text-right wh-100">Developer by Eric Castro</p>
 	</footer>
 
