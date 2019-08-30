@@ -80,7 +80,7 @@
 	<!-- Container Principal -->
 
 	<footer class="fixed-bottom bg-dark" style="color: white">
-		<p class="text-right wh-100">Developer by Eric Castro</p>
+		<p class="text-right wh-100">Developed by Eric Castro</p>
 	</footer>
 
 </body>
