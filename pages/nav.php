@@ -18,10 +18,7 @@
 				<a class="nav-link" href="create.php">Cadastrar</a>
 			</li>
 			<li <?php if( $file == "update.php") { echo 'class="nav-item active"';} else { echo 'class="nav-item"';} ?>>
-				<a class="nav-link" href="update.php">Editar</a>
-			</li>
-			<li <?php if( $file == "delete.php") { echo 'class="nav-item active"';} else { echo 'class="nav-item"';} ?>>
-				<a class="nav-link" href="delete.php">Excluir</a>
+				<a class="nav-link" href="update.php">Editar / Excluir</a>
 			</li>
 		</ul>
 	</div>
