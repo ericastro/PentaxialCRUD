@@ -1,19 +1,22 @@
-@media (max-width: 575.98px) { 
+@media (max-width: 575.98px) { ... }
+
+@media (max-width: 767.98px) and ( portation: landscape) {
 	h1{ 
 		font-size: 1.5rem;
+		margin-top: 200px;
 	}
 	.btn-lg{
 		padding: .2rem .65rem;
 	}
 }
 
-@media (max-width: 767.98px) {
-	h1{
-		margin-top: 20px;
+@media (max-width: 767.98px) { ... }
+
+@media (max-width: 991.98px) { 
+	h1{ 
+		font-size: 1.7rem;
 	}
 }
-
-@media (max-width: 991.98px) { ... }
 
 @media (max-width: 1199.98px) { ... }
 
