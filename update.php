@@ -68,6 +68,7 @@
 			</div>
 			<div class="col-sm-12 col-md-7">
 					<button class="btn-dark btn-lg ml-3" onclick="Editar();">Editar</button>
+					<button type="button" class="btn-danger btn-lg ml-3" data-toggle="modal" data-target="#modalExcluir" onclick="Excluir($('#idPessoa').val());">Excluir</button>
 			</div>
 		</div>
 		<div class="row">
@@ -76,7 +77,7 @@
 				<form action="update.php" method="POST" enctype="multipart/form-data">
 					<div>
 						<label for="nome">Nome</label>
-						<input type="hidden" name="idPessoa" value="<?=$pessoa->idPessoa?>">
+						<input type="hidden" id="idPessoa" name="idPessoa" value="<?=$pessoa->idPessoa?>">
 						<input type="form-text" class="form-control myInputs" id="nome" name="nome" value="<?=$pessoa->nome?>" aria-describedby="nomeHelp" placeholder="Digite o nome" disabled="true" />
 					</div>
 
@@ -112,6 +113,26 @@
 	</div>
 	<!-- Container Principal -->
 
+	<!-- Modal de Exclusão -->
+	<div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="TituloModalCentralizado">Excluir Pessoa ?</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="Apagar();">Excluir</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal de Exclusão -->
+
 	<script type="text/javascript">
 		function Editar(){
 			$( "#nome" ).prop( "disabled", false );
@@ -120,6 +141,22 @@
 			$( "#email" ).prop( "disabled", false );
 			$( "#files" ).prop( "disabled", false );
 			$( "#btnSalvar" ).prop( "disabled", false );
+		}
+
+		function Excluir(idPessoa){
+			var nome = $('#nome').val();
+			var sobrenome = $('#sobrenome').val();
+			var html = "";
+			html = html.concat(nome);
+			html = html.concat(" ");
+			html = html.concat(sobrenome);
+			$(".modal-body").text(html);
+		}
+
+		function Apagar(){
+			var id  = $("#idPessoa").val();
+			var url = "index.php?apagarId=".concat(id);
+			window.location.href = url;
 		}
 	</script>
 
