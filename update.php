@@ -1,3 +1,37 @@
+<?php
+	include_once 'DBMS.class.php';
+	$pessoas 	= "";
+	$error 		= "";
+	$crud 		= new CRUD();
+	$table 		= "pessoas";
+
+	if ( !empty($_GET) )
+	{
+		try
+		{
+			$pessoas = $crud->Read($table,"WHERE idPessoa = " . $_GET['id']);
+		}
+		catch (Exeption $ex)
+		{
+			$error = "Ocorreu o erro : " + $ex.message();
+		}
+	}
+	else if ( !empty($_POST) )
+	{
+		try
+		{
+			$pessoas = $crud->Update($table,["nome" 		=> "'" . $_POST['nome'] . "'",
+											 "sobrenome" 	=> "'" . $_POST['sobrenome'] . "'",
+											 "sexo" 		=> "'" . $_POST['sexo'] . "'",
+											 "email" 		=> "'" . $_POST['email'] . "'",],$_POST['idPessoa']);
+		}
+		catch (Exeption $ex)
+		{
+			$error = "Ocorreu o erro : " + $ex.message();
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -16,6 +50,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 col-md-5">
+				<?php
+					if ( !empty($_POST) )
+					{
+						echo "<div class='alert alert-success alert-dismissible fade show' role='alert'><strong>" . $_POST["nome"] . " " . $_POST["sobrenome"] ."</strong>, foi atualizado(a) com sucesso!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
+					}
+					else if ( $error != "" )
+					{
+						echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'><strong>" . $error . "</strong><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";	
+					}
+				?>
 				<h1>Cadastro de Pessoas</h1>
 			</div>
 			<div class="col-sm-12 col-md-7">
@@ -24,30 +68,31 @@
 		</div>
 		<div class="row">
 			<div class="col-12">
+				<?php foreach ($pessoas as $pessoa) { ?>
 				<form action="process.php" method="POST" enctype="multipart/form-data">
 					<div>
 						<label for="nome">Nome</label>
-						<input type="hidden" name="idPessoa" value="1">
-						<input type="form-text" class="form-control myInputs" id="nome" name="nome" aria-describedby="nomeHelp" placeholder="Digite o nome" disabled="true" />
+						<input type="hidden" name="idPessoa" value="<?=$pessoa->idPessoa?>">
+						<input type="form-text" class="form-control myInputs" id="nome" name="nome" value="<?=$pessoa->nome?>" aria-describedby="nomeHelp" placeholder="Digite o nome" disabled="true" />
 					</div>
 
 					<div>
 						<label for="sobrenome">Sobrenome</label>
-						<input type="form-text" class="form-control myInputs" id="sobrenome" name="sobrenome" aria-describedby="sobrenomeHelp" placeholder="Digite o Sobrenome" disabled="true" />
+						<input type="form-text" class="form-control myInputs" id="sobrenome" name="sobrenome" value="<?=$pessoa->sobrenome?>" aria-describedby="sobrenomeHelp" placeholder="Digite o Sobrenome" disabled="true" />
 					</div>
 
 					<div>
 						<label for="sexo">Sexo</label>
 						<select id="sexo" class="form-control myInputs" disabled="true">
-						<option selected>Escolher...</option>
-							<option value="Masculino">Masculino</option>
-							<option value="Feminino">Feminino</option>
+						<option>Escolher...</option>
+							<option <?php if ( $pessoa->sexo == 'M' ) { echo 'selected'; } ?> value="Masculino">Masculino</option>
+							<option <?php if ( $pessoa->sexo == 'F' ) { echo 'selected'; } ?> value="Feminino">Feminino</option>
 						</select>
 					</div>
 
 					<div>
 						<label for="email">Endereço de email</label>
-						<input type="email" class="form-control myInputs" id="email" aria-describedby="emailHelp" placeholder="Seu email" disabled="true" />
+						<input type="email" class="form-control myInputs" id="email" value="<?=$pessoa->email?>" aria-describedby="emailHelp" placeholder="Seu email" disabled="true" />
 						<small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
 					</div>
 
@@ -57,6 +102,7 @@
 					
 					<button id="btnSalvar" type="submit" class="btn btn-dark btn-primary myInputs" disabled="true">Salvar</button>	
 				</form>
+				<?php } ?>
 			</div>
 		</div>
 	</div>
