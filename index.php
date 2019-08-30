@@ -1,3 +1,20 @@
+<?php
+	include_once 'DBMS.class.php';
+	$pessoas 	= "";
+	$error 		= "";
+	$crud 		= new CRUD();
+	$table 		= "pessoas";
+
+	try
+	{
+		$pessoas = $crud->Read($table,"","idPessoa ASC");
+	}
+	catch (Exeption $ex)
+	{
+		$error = "Ocorreu o erro : " + $ex.message();
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -24,31 +41,26 @@
 				<table class="table table-striped table-hover">
 					<thead class="thead-dark">
 						<tr>
-							<th scope="col">#</th>
-							<th scope="col">Primeiro</th>
-							<th scope="col">Último</th>
-							<th scope="col">Nickname</th>
+							<th scope="col">Id</th>
+							<th scope="col">Nome</th>
+							<th scope="col">Sobrenome</th>
+							<th scope="col">Email</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr onclick="editarPessoa('1');">
-							<th scope="row">1</th>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Jacob</td>
-							<td>Thornton</td>
-							<td>@fat</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td>Larry</td>
-							<td>the Bird</td>
-							<td>@twitter</td>
-						</tr>
+						<?php
+							if(is_object($pessoas))
+							{
+								foreach ($pessoas as $pessoa) {
+									echo '<tr onclick="editarPessoa(' . $pessoa->idPessoa . ')">';
+									echo '<th scope="row">' . $pessoa->idPessoa . '</th>';
+									echo '<td>' . $pessoa->nome . '</td>';
+									echo '<td>' . $pessoa->sobrenome . '</td>';
+									echo '<td>' . $pessoa->email . '</td>';
+									echo '</tr>';
+								}	
+							}
+						?>
 					</tbody>
 				</table>
 			</div>
@@ -56,16 +68,16 @@
 	</div>
 	<!-- Container Principal -->
 
-	<script type="text/javascript">
-		function editarPessoa(idPessoa) {
-			alert(idPessoa);
-		}
-		$( document ).ready(function() {});
-	</script>
-
 	<footer class="fixed-bottom bg-dark footer-color">
 		<p class="text-right wh-100">Developed by Eric Castro</p>
 	</footer>
+
+	<script type="text/javascript">
+		function editarPessoa(idPessoa) {
+			var url = "update.php?id=".concat(idPessoa);
+			window.location.href = url;
+		}
+	</script>
 
 </body>
 <?php include_once 'pages/javascript.php'; ?>
