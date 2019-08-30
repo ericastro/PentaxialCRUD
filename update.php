@@ -24,6 +24,8 @@
 											 "sobrenome" 	=> "'" . $_POST['sobrenome'] . "'",
 											 "sexo" 		=> "'" . $_POST['sexo'] . "'",
 											 "email" 		=> "'" . $_POST['email'] . "'",],$_POST['idPessoa']);
+			//ISSO NAO É CORRETO!!!
+			$pessoas = $crud->Read($table,"WHERE idPessoa = " . $_POST['idPessoa']);
 		}
 		catch (Exeption $ex)
 		{
@@ -49,7 +51,7 @@
 	<!-- Container Principal -->
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-12 col-md-5">
+			<div class="col-12">
 				<?php
 					if ( !empty($_POST) )
 					{
@@ -60,6 +62,8 @@
 						echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'><strong>" . $error . "</strong><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";	
 					}
 				?>
+			</div>
+			<div class="col-sm-12 col-md-5">
 				<h1>Cadastro de Pessoas</h1>
 			</div>
 			<div class="col-sm-12 col-md-7">
@@ -68,8 +72,8 @@
 		</div>
 		<div class="row">
 			<div class="col-12">
-				<?php foreach ($pessoas as $pessoa) { ?>
-				<form action="process.php" method="POST" enctype="multipart/form-data">
+				<?php if (is_object($pessoas)){ foreach ($pessoas as $pessoa) { ?>
+				<form action="update.php" method="POST" enctype="multipart/form-data">
 					<div>
 						<label for="nome">Nome</label>
 						<input type="hidden" name="idPessoa" value="<?=$pessoa->idPessoa?>">
@@ -83,7 +87,7 @@
 
 					<div>
 						<label for="sexo">Sexo</label>
-						<select id="sexo" class="form-control myInputs" disabled="true">
+						<select id="sexo" name="sexo" class="form-control myInputs" disabled="true">
 						<option>Escolher...</option>
 							<option <?php if ( $pessoa->sexo == 'M' ) { echo 'selected'; } ?> value="Masculino">Masculino</option>
 							<option <?php if ( $pessoa->sexo == 'F' ) { echo 'selected'; } ?> value="Feminino">Feminino</option>
@@ -92,17 +96,17 @@
 
 					<div>
 						<label for="email">Endereço de email</label>
-						<input type="email" class="form-control myInputs" id="email" value="<?=$pessoa->email?>" aria-describedby="emailHelp" placeholder="Seu email" disabled="true" />
+						<input type="email" class="form-control myInputs" name="email" id="email" value="<?=$pessoa->email?>" aria-describedby="emailHelp" placeholder="Seu email" disabled="true" />
 						<small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
 					</div>
 
 					<div>
-						<label>Anexar arquivos: <input id="files" type="file" name="image[]" multiple="multiple" class="myInputs" disabled="true" /></label>	
+						<label>Anexar arquivos: <input id="files" type="file" name="files[]" multiple="multiple" class="myInputs" disabled="true" /></label>	
 					</div>
 					
 					<button id="btnSalvar" type="submit" class="btn btn-dark btn-primary myInputs" disabled="true">Salvar</button>	
 				</form>
-				<?php } ?>
+				<?php } }?>
 			</div>
 		</div>
 	</div>
@@ -110,7 +114,6 @@
 
 	<script type="text/javascript">
 		function Editar(){
-			alert();
 			$( "#nome" ).prop( "disabled", false );
 			$( "#sobrenome" ).prop( "disabled", false );
 			$( "#sexo" ).prop( "disabled", false );
